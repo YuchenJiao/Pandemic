@@ -1,0 +1,319 @@
+{
+  "sources": {
+    "base": "https://cdn.svc.asmodee.net/production-zman/uploads/2024/09/Pandemic_Rulebook.pdf",
+    "onTheBrink": "https://cdn.svc.asmodee.net/production-zman/uploads/2024/09/On-the-Brink_Rules_Web.pdf"
+  },
+  "baseRules": {
+    "startCity": "Atlanta",
+    "researchStations": 6,
+    "cubesPerDisease": 24,
+    "handLimit": 7,
+    "actionsPerTurn": 4,
+    "initialHands": {
+      "2": 4,
+      "3": 3,
+      "4": 2
+    },
+    "infectionRates": [
+      2,
+      2,
+      2,
+      3,
+      3,
+      4,
+      4
+    ],
+    "initialInfection": [
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "firstPlayer": "Player holding highest-population City card",
+    "epidemicCounts": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "epidemicSetup": "After dealing hands, split remaining player cards as equally as possible into N piles, shuffle one epidemic into each; stack larger piles above smaller piles. Never freely shuffle epidemics into whole player deck.",
+    "epidemic": "Increase track, draw bottom Infection city, fill city to 3 cubes and outbreak if previously held any matching cubes; if empty add3. Discard city. Shuffle only Infection discard and put above draw pile. No replacement player card.",
+    "outbreak": "Each outbreak adds1 matching-color cube to each neighbor. A city that has already outbroken during this Infection-card chain neither outbreaks again nor gets cube. Chains finish before next Infection card. Cities may have up to3 of EACH color.",
+    "victory": "Immediate once all four cures found; eradication unnecessary.",
+    "losses": [
+      "8 outbreak track",
+      "Cannot place actually needed cubes",
+      "At player draw step fewer than2 player cards remain"
+    ],
+    "eventTiming": "No actions consumed; any player may play between resolved cards or player actions. Cannot interrupt drawn infection before its placement/outbreaks. Explicit Resilient Population exception allows between Epidemic Infect and Intensify. Between two drawn epidemics permitted.",
+    "handLimitTiming": "Resolve drawn epidemics first, then discard/play events to limit. A knowledge transfer immediately interrupts to discard/play events until within limit.",
+    "noFreeDiscard": "Do not freely discard cards merely to help Archivist; discard only as an action cost or when over hand limit."
+  },
+  "baseRoles": [
+    {
+      "id": "medic",
+      "name": "Medic",
+      "abilities": [
+        "Treat removes all cubes of one color.",
+        "Automatically remove cured disease cubes in own city, including entering via other players movement.",
+        "Prevents placement and outbreaks of cured diseases in own city."
+      ]
+    },
+    {
+      "id": "scientist",
+      "name": "Scientist",
+      "abilities": [
+        "Discover cure with4 instead5 matching City cards."
+      ]
+    },
+    {
+      "id": "researcher",
+      "name": "Researcher",
+      "abilities": [
+        "May give any City card to colocated player via Share Knowledge without city match. Can occur on either turn. Does not let researcher receive unmatched cards."
+      ]
+    },
+    {
+      "id": "dispatcher",
+      "name": "Dispatcher",
+      "abilities": [
+        "Spend1 action to move any pawn to a city containing another pawn with owner permission.",
+        "Move other pawn as own; uses dispatcher own City cards, with charter card matching origin of moved pawn. Cannot use target Operations Expert ability."
+      ]
+    },
+    {
+      "id": "operations_expert",
+      "name": "Operations Expert",
+      "abilities": [
+        "Build current-city station without card for1 action.",
+        "Once per own turn as1 action discard any City card to move from research station to any city."
+      ]
+    },
+    {
+      "id": "quarantine_specialist",
+      "name": "Quarantine Specialist",
+      "abilities": [
+        "Prevents cube placements and outbreaks in own city and all adjacent cities. Does not apply during setup."
+      ]
+    },
+    {
+      "id": "contingency_planner",
+      "name": "Contingency Planner",
+      "abilities": [
+        "As1 action retrieve any discarded Event to role card; only1 stored and not part of hand.",
+        "Playing stored event removes it permanently instead of discarding."
+      ]
+    }
+  ],
+  "brinkRoles": [
+    {
+      "id": "archivist",
+      "name": "Archivist",
+      "abilities": [
+        "Hand limit8.",
+        "Once per own turn spend1 action retrieve current-city City card from Player discard."
+      ]
+    },
+    {
+      "id": "generalist",
+      "name": "Generalist",
+      "abilities": [
+        "5 actions per turn."
+      ]
+    },
+    {
+      "id": "containment_specialist",
+      "name": "Containment Specialist",
+      "abilities": [
+        "Whenever enters city, remove1 cube of EACH disease with2 or more cubes present. Applies when moved by others."
+      ]
+    },
+    {
+      "id": "epidemiologist",
+      "name": "Epidemiologist",
+      "abilities": [
+        "Once during own turn take any City card from colocated consenting player for0 actions."
+      ]
+    },
+    {
+      "id": "field_operative",
+      "name": "Field Operative",
+      "abilities": [
+        "Once per own turn spend1 action move1 current-city cube onto own role card as sample.",
+        "When discovering cure, may replace EXACTLY2 City cards by returning3 own samples of cure color.",
+        "Can return own samples to supply at event timing.",
+        "Excluded from Lab Challenge."
+      ]
+    },
+    {
+      "id": "troubleshooter",
+      "name": "Troubleshooter",
+      "abilities": [
+        "At own turn start secretly view top Infection cards equal current rate and return in same order. No extra bottom draw when looking at Mutation.",
+        "Direct flight reveals City card without discarding. Works when moving another pawn via own Special Orders; not when moved by others."
+      ]
+    }
+  ],
+  "baseEvents": [
+    {
+      "id": "airlift",
+      "name": "Airlift",
+      "effect": "Move any pawn to any city with owner consent."
+    },
+    {
+      "id": "forecast",
+      "name": "Forecast",
+      "effect": "Look at top6 Infection cards, reorder these same6 and put back."
+    },
+    {
+      "id": "government_grant",
+      "name": "Government Grant",
+      "effect": "Place research station in any city without City card; at6 stations relocate an existing station."
+    },
+    {
+      "id": "one_quiet_night",
+      "name": "One Quiet Night",
+      "effect": "Skip the next entire Infect Cities step. Does not skip epidemic."
+    },
+    {
+      "id": "resilient_population",
+      "name": "Resilient Population",
+      "effect": "Remove any1 City Infection card in Infection discard permanently. May play between Epidemic Infect and Intensify. Cannot remove Mutation cards."
+    }
+  ],
+  "brinkEvents": [
+    {
+      "id": "borrowed_time",
+      "name": "Borrowed Time",
+      "effect": "Current player gets2 extra actions THIS turn. Cannot play immediately when drawn to re-enter already finished action phase."
+    },
+    {
+      "id": "commercial_travel_ban",
+      "name": "Commercial Travel Ban",
+      "effect": "Infection rate is1 until current player next begins a turn; keep faceup until then."
+    },
+    {
+      "id": "mobile_hospital",
+      "name": "Mobile Hospital",
+      "effect": "THIS turn remove1 disease cube from each city current player drives/ferries into. Not other movement types. Containment removes automatically first, then Hospital1. Counts toward Government Interference treatment requirement."
+    },
+    {
+      "id": "new_assignment",
+      "name": "New Assignment",
+      "effect": "Choose player to swap role with any unused role. If current player changes from/to Generalist this turn permits up to5 actions."
+    },
+    {
+      "id": "rapid_vaccine_deployment",
+      "name": "Rapid Vaccine Deployment",
+      "timing": "Only immediately after Discover a Cure action",
+      "effect": "Remove1\u20135 cubes of just-cured disease, from connected selected cities; at least1 cube per city and each affected city connected to another affected city unless only1 city."
+    },
+    {
+      "id": "reexamined_research",
+      "name": "Re-examined Research",
+      "effect": "Choose player to retrieve any1 City card from Player discard to hand; enforce hand limit."
+    },
+    {
+      "id": "remote_treatment",
+      "name": "Remote Treatment",
+      "effect": "Remove2 disease cubes from board, any colors/cities."
+    },
+    {
+      "id": "special_orders",
+      "name": "Special Orders",
+      "effect": "THIS turn current player may spend actions to move ONE chosen other pawn as own with consent. Acting player uses own cards/reveal powers; moved pawn arrival effects apply."
+    }
+  ],
+  "brinkSetup": {
+    "eventPool": "Shuffle base5 + brink8; include exactly2 events per pawn/player, chosen randomly without inspecting unused. For Lab include its3 too.",
+    "roles": "Shuffle base7 +6 brink roles, excluding Bio-Terrorist. Field operative unavailable with Lab.",
+    "legendary": "7 epidemics, infection track remains4 on7th.",
+    "challengeCombos": "Virulent may combine Mutation or Bio-Terrorist; Mutation and Bio-Terrorist mutually exclusive. Lab can combine Virulent/Mutation/Bio-Terrorist but not Team mode."
+  },
+  "virulent": {
+    "setup": "Replace regular epidemics by shuffled VS epidemics, randomly select needed number4\u20137 unseen. After first epidemic Infect choose world-board color with most cubes as permanent VS, random tied choice. Purple ineligible with ORIGINAL Mutation. Worldwide Panic allows purple.",
+    "effectOrder": "Immediate effects before Intensify. Persistent effects after completed epidemic, kept faceup.",
+    "effects": [
+      {
+        "id": "chronic_effect",
+        "name": "Chronic Effect",
+        "persistent": true,
+        "effect": "During normal Infection step, VS city gets2 VS cubes if it previously has0 VS cubes; otherwise1. No effect on epidemic/outbreak."
+      },
+      {
+        "id": "complex_molecular_structure",
+        "name": "Complex Molecular Structure",
+        "persistent": true,
+        "effect": "If VS not cured, add1 to required City-card count for Discover Cure. Scientist5; field operative4 plus3 VS samples. In Lab apply to lab base3."
+      },
+      {
+        "id": "government_interference",
+        "name": "Government Interference",
+        "persistent": true,
+        "effect": "To leave a city with VS cubes, CURRENT acting player must already have Treated at least1 VS cube in that city this turn. Applies when moving others via dispatcher/airlift/special orders. Mere removal through containment/field sample/Remote Treatment/Rapid Vaccine does not satisfy; Mobile Hospital does."
+      },
+      {
+        "id": "rate_effect",
+        "name": "Rate Effect",
+        "persistent": true,
+        "effect": "During normal Infection step draw EXACTLY1 additional card beyond rate if any card drawn is VS city AND VS not eradicated. No recursive+1. Bottom city drawn to resolve Mutation does not count. Troubleshooter peek does not increase."
+      },
+      {
+        "id": "slippery_slope",
+        "name": "Slippery Slope",
+        "persistent": true,
+        "effect": "Each VS outbreak advances outbreak track2 instead1."
+      },
+      {
+        "id": "hidden_pocket",
+        "name": "Hidden Pocket",
+        "persistent": false,
+        "effect": "Before Intensify, if VS eradicated and any VS City cards in Infection discard: make VS cured-but-not-eradicated, place1 VS cube on each such discard city. Otherwise no effect. Worldwide Panic purple VS: no effect."
+      },
+      {
+        "id": "unacceptable_loss",
+        "name": "Unacceptable Loss",
+        "persistent": false,
+        "effect": "Before Intensify remove4 VS cubes from supply permanently; if fewer than4 remove all supply."
+      },
+      {
+        "id": "uncounted_populations",
+        "name": "Uncounted Populations",
+        "persistent": false,
+        "effect": "Before Intensify place1 VS cube in each city with EXACTLY1 VS cube, ignoring other colors."
+      }
+    ]
+  },
+  "mutation": {
+    "setup": "12 purple supply;2 Mutation infection cards begin in Infection DISCARD, not draw pile. Shuffle3 Mutation Event cards into remaining Player cards AFTER initial hands dealt and BEFORE epidemic piles prepared. No starting purple cubes in original challenge.",
+    "playerMutationEvents": [
+      {
+        "id": "mutation_threatens",
+        "name": "The Mutation Threatens!",
+        "effect": "If purple not eradicated draw1 bottom Infection city; place3 purple only; discard city."
+      },
+      {
+        "id": "mutation_spreads",
+        "name": "The Mutation Spreads",
+        "effect": "If purple not eradicated draw3 bottom Infection cities; place1 purple only on each; discard cities."
+      },
+      {
+        "id": "mutation_intensifies",
+        "name": "The Mutation Intensifies!",
+        "effect": "Add1 purple to every city with EXACTLY2 purple, ignoring other colors."
+      }
+    ],
+    "drawTiming": "Resolve Mutation Events immediately; no replacement draw. If same draw includes Mutation Event and epidemic resolve Mutation Event first. If2 Mutation Events player chooses order.",
+    "infectionMutation": "Drawn Mutation card counts as1 draw. If purple not eradicated draw bottom Infection CITY, place1 purple only, discard both. If eradicated discard Mutation only.",
+    "normalCityInfection": "If drawn Infection city ALREADY has \u22651 purple, add1 purple if not eradicated AND1 natural-color if not eradicated; resolve outbreaks of each normally. Only regular Infection city drawing places both; epidemic and mutation bottom draws place solely designated color.",
+    "cure": "At station discard5 City cards in any colors, at least1 must name city currently holding purple. Scientist4 and field operative substitution allowed but at least1 city holding purple still required. Lab overrides cure procedure.",
+    "victory": "Cure all5 OR cure natural4 and have0 purple cubes on WORLD BOARD.",
+    "loss": "Cannot place actually-needed purple cubes loses as normal.",
+    "resilientPopulation": "Cannot remove Mutation Infection cards."
+  }
+}

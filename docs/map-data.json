@@ -1,0 +1,971 @@
+{
+  "sources": {
+    "map": "https://cdn.svc.asmodee.net/production-zman/uploads/2024/09/Bio_Terroist_Location-Sheet.pdf",
+    "base": "https://cdn.svc.asmodee.net/production-zman/uploads/2024/09/Pandemic_Rulebook.pdf",
+    "onTheBrink": "https://cdn.svc.asmodee.net/production-zman/uploads/2024/09/On-the-Brink_Rules_Web.pdf",
+    "populations": "https://cdn.svc.asmodee.net/production-zman/uploads/2024/09/Pandemic-Survival_Scenario1.pdf"
+  },
+  "cityCount": 48,
+  "edgeCount": 93,
+  "cities": [
+    {
+      "id": "san-francisco",
+      "name": "San Francisco",
+      "color": "blue",
+      "neighbors": [
+        "Tokyo",
+        "Manila",
+        "Los Angeles",
+        "Chicago"
+      ],
+      "population": 5864000
+    },
+    {
+      "id": "chicago",
+      "name": "Chicago",
+      "color": "blue",
+      "neighbors": [
+        "San Francisco",
+        "Los Angeles",
+        "Mexico City",
+        "Atlanta",
+        "Montreal"
+      ],
+      "population": 9121000
+    },
+    {
+      "id": "montreal",
+      "name": "Montreal",
+      "color": "blue",
+      "neighbors": [
+        "Chicago",
+        "Washington",
+        "New York"
+      ],
+      "population": 3429000
+    },
+    {
+      "id": "new-york",
+      "name": "New York",
+      "color": "blue",
+      "neighbors": [
+        "Montreal",
+        "Washington",
+        "London",
+        "Madrid"
+      ],
+      "population": 20464000
+    },
+    {
+      "id": "washington",
+      "name": "Washington",
+      "color": "blue",
+      "neighbors": [
+        "Montreal",
+        "New York",
+        "Atlanta",
+        "Miami"
+      ],
+      "population": 4679000
+    },
+    {
+      "id": "atlanta",
+      "name": "Atlanta",
+      "color": "blue",
+      "neighbors": [
+        "Chicago",
+        "Washington",
+        "Miami"
+      ],
+      "population": 4715000
+    },
+    {
+      "id": "london",
+      "name": "London",
+      "color": "blue",
+      "neighbors": [
+        "New York",
+        "Madrid",
+        "Paris",
+        "Essen"
+      ],
+      "population": 8586000
+    },
+    {
+      "id": "madrid",
+      "name": "Madrid",
+      "color": "blue",
+      "neighbors": [
+        "New York",
+        "London",
+        "Paris",
+        "Algiers",
+        "Sao Paulo"
+      ],
+      "population": 5427000
+    },
+    {
+      "id": "paris",
+      "name": "Paris",
+      "color": "blue",
+      "neighbors": [
+        "London",
+        "Madrid",
+        "Essen",
+        "Milan",
+        "Algiers"
+      ],
+      "population": 10755000
+    },
+    {
+      "id": "essen",
+      "name": "Essen",
+      "color": "blue",
+      "neighbors": [
+        "London",
+        "Paris",
+        "Milan",
+        "St. Petersburg"
+      ],
+      "population": 575000
+    },
+    {
+      "id": "milan",
+      "name": "Milan",
+      "color": "blue",
+      "neighbors": [
+        "Essen",
+        "Paris",
+        "Istanbul"
+      ],
+      "population": 5232000
+    },
+    {
+      "id": "st-petersburg",
+      "name": "St. Petersburg",
+      "color": "blue",
+      "neighbors": [
+        "Essen",
+        "Istanbul",
+        "Moscow"
+      ],
+      "population": 4879000
+    },
+    {
+      "id": "los-angeles",
+      "name": "Los Angeles",
+      "color": "yellow",
+      "neighbors": [
+        "San Francisco",
+        "Chicago",
+        "Mexico City",
+        "Sydney"
+      ],
+      "population": 14900000
+    },
+    {
+      "id": "mexico-city",
+      "name": "Mexico City",
+      "color": "yellow",
+      "neighbors": [
+        "Los Angeles",
+        "Chicago",
+        "Miami",
+        "Bogota",
+        "Lima"
+      ],
+      "population": 19463000
+    },
+    {
+      "id": "miami",
+      "name": "Miami",
+      "color": "yellow",
+      "neighbors": [
+        "Atlanta",
+        "Washington",
+        "Mexico City",
+        "Bogota"
+      ],
+      "population": 5582000
+    },
+    {
+      "id": "bogota",
+      "name": "Bogota",
+      "color": "yellow",
+      "neighbors": [
+        "Mexico City",
+        "Miami",
+        "Lima",
+        "Buenos Aires",
+        "Sao Paulo"
+      ],
+      "population": 8702000
+    },
+    {
+      "id": "lima",
+      "name": "Lima",
+      "color": "yellow",
+      "neighbors": [
+        "Mexico City",
+        "Bogota",
+        "Santiago"
+      ],
+      "population": 9121000
+    },
+    {
+      "id": "santiago",
+      "name": "Santiago",
+      "color": "yellow",
+      "neighbors": [
+        "Lima"
+      ],
+      "population": 6015000
+    },
+    {
+      "id": "buenos-aires",
+      "name": "Buenos Aires",
+      "color": "yellow",
+      "neighbors": [
+        "Bogota",
+        "Sao Paulo"
+      ],
+      "population": 13639000
+    },
+    {
+      "id": "sao-paulo",
+      "name": "Sao Paulo",
+      "color": "yellow",
+      "neighbors": [
+        "Bogota",
+        "Buenos Aires",
+        "Madrid",
+        "Lagos"
+      ],
+      "population": 20186000
+    },
+    {
+      "id": "lagos",
+      "name": "Lagos",
+      "color": "yellow",
+      "neighbors": [
+        "Sao Paulo",
+        "Kinshasa",
+        "Khartoum"
+      ],
+      "population": 11547000
+    },
+    {
+      "id": "kinshasa",
+      "name": "Kinshasa",
+      "color": "yellow",
+      "neighbors": [
+        "Lagos",
+        "Khartoum",
+        "Johannesburg"
+      ],
+      "population": 9046000
+    },
+    {
+      "id": "johannesburg",
+      "name": "Johannesburg",
+      "color": "yellow",
+      "neighbors": [
+        "Kinshasa",
+        "Khartoum"
+      ],
+      "population": 3888000
+    },
+    {
+      "id": "khartoum",
+      "name": "Khartoum",
+      "color": "yellow",
+      "neighbors": [
+        "Lagos",
+        "Kinshasa",
+        "Johannesburg",
+        "Cairo"
+      ],
+      "population": 4887000
+    },
+    {
+      "id": "algiers",
+      "name": "Algiers",
+      "color": "black",
+      "neighbors": [
+        "Madrid",
+        "Paris",
+        "Istanbul",
+        "Cairo"
+      ],
+      "population": 2946000
+    },
+    {
+      "id": "cairo",
+      "name": "Cairo",
+      "color": "black",
+      "neighbors": [
+        "Algiers",
+        "Istanbul",
+        "Baghdad",
+        "Riyadh",
+        "Khartoum"
+      ],
+      "population": 14718000
+    },
+    {
+      "id": "istanbul",
+      "name": "Istanbul",
+      "color": "black",
+      "neighbors": [
+        "Milan",
+        "St. Petersburg",
+        "Moscow",
+        "Baghdad",
+        "Cairo",
+        "Algiers"
+      ],
+      "population": 13576000
+    },
+    {
+      "id": "moscow",
+      "name": "Moscow",
+      "color": "black",
+      "neighbors": [
+        "St. Petersburg",
+        "Istanbul",
+        "Tehran"
+      ],
+      "population": 15512000
+    },
+    {
+      "id": "baghdad",
+      "name": "Baghdad",
+      "color": "black",
+      "neighbors": [
+        "Istanbul",
+        "Cairo",
+        "Riyadh",
+        "Karachi",
+        "Tehran"
+      ],
+      "population": 6204000
+    },
+    {
+      "id": "tehran",
+      "name": "Tehran",
+      "color": "black",
+      "neighbors": [
+        "Moscow",
+        "Baghdad",
+        "Karachi",
+        "Delhi"
+      ],
+      "population": 7419000
+    },
+    {
+      "id": "riyadh",
+      "name": "Riyadh",
+      "color": "black",
+      "neighbors": [
+        "Cairo",
+        "Baghdad",
+        "Karachi"
+      ],
+      "population": 5037000
+    },
+    {
+      "id": "karachi",
+      "name": "Karachi",
+      "color": "black",
+      "neighbors": [
+        "Tehran",
+        "Baghdad",
+        "Riyadh",
+        "Mumbai",
+        "Delhi"
+      ],
+      "population": 20711000
+    },
+    {
+      "id": "mumbai",
+      "name": "Mumbai",
+      "color": "black",
+      "neighbors": [
+        "Karachi",
+        "Delhi",
+        "Chennai"
+      ],
+      "population": 16910000
+    },
+    {
+      "id": "delhi",
+      "name": "Delhi",
+      "color": "black",
+      "neighbors": [
+        "Tehran",
+        "Karachi",
+        "Mumbai",
+        "Chennai",
+        "Kolkata"
+      ],
+      "population": 22242000
+    },
+    {
+      "id": "chennai",
+      "name": "Chennai",
+      "color": "black",
+      "neighbors": [
+        "Mumbai",
+        "Delhi",
+        "Kolkata",
+        "Bangkok",
+        "Jakarta"
+      ],
+      "population": 8865000
+    },
+    {
+      "id": "kolkata",
+      "name": "Kolkata",
+      "color": "black",
+      "neighbors": [
+        "Delhi",
+        "Chennai",
+        "Bangkok",
+        "Hong Kong"
+      ],
+      "population": 14374000
+    },
+    {
+      "id": "beijing",
+      "name": "Beijing",
+      "color": "red",
+      "neighbors": [
+        "Shanghai",
+        "Seoul"
+      ],
+      "population": 17311000
+    },
+    {
+      "id": "seoul",
+      "name": "Seoul",
+      "color": "red",
+      "neighbors": [
+        "Beijing",
+        "Shanghai",
+        "Tokyo"
+      ],
+      "population": 22547000
+    },
+    {
+      "id": "tokyo",
+      "name": "Tokyo",
+      "color": "red",
+      "neighbors": [
+        "Seoul",
+        "Shanghai",
+        "Osaka",
+        "San Francisco"
+      ],
+      "population": 13189000
+    },
+    {
+      "id": "shanghai",
+      "name": "Shanghai",
+      "color": "red",
+      "neighbors": [
+        "Beijing",
+        "Seoul",
+        "Tokyo",
+        "Taipei",
+        "Hong Kong"
+      ],
+      "population": 13482000
+    },
+    {
+      "id": "hong-kong",
+      "name": "Hong Kong",
+      "color": "red",
+      "neighbors": [
+        "Shanghai",
+        "Taipei",
+        "Manila",
+        "Ho Chi Minh City",
+        "Bangkok",
+        "Kolkata"
+      ],
+      "population": 7106000
+    },
+    {
+      "id": "taipei",
+      "name": "Taipei",
+      "color": "red",
+      "neighbors": [
+        "Shanghai",
+        "Osaka",
+        "Manila",
+        "Hong Kong"
+      ],
+      "population": 8338000
+    },
+    {
+      "id": "osaka",
+      "name": "Osaka",
+      "color": "red",
+      "neighbors": [
+        "Tokyo",
+        "Taipei"
+      ],
+      "population": 2871000
+    },
+    {
+      "id": "bangkok",
+      "name": "Bangkok",
+      "color": "red",
+      "neighbors": [
+        "Kolkata",
+        "Chennai",
+        "Jakarta",
+        "Ho Chi Minh City",
+        "Hong Kong"
+      ],
+      "population": 7151000
+    },
+    {
+      "id": "ho-chi-minh-city",
+      "name": "Ho Chi Minh City",
+      "color": "red",
+      "neighbors": [
+        "Bangkok",
+        "Hong Kong",
+        "Manila",
+        "Jakarta"
+      ],
+      "population": 8314000
+    },
+    {
+      "id": "manila",
+      "name": "Manila",
+      "color": "red",
+      "neighbors": [
+        "Taipei",
+        "Hong Kong",
+        "Ho Chi Minh City",
+        "Sydney",
+        "San Francisco"
+      ],
+      "population": 20767000
+    },
+    {
+      "id": "jakarta",
+      "name": "Jakarta",
+      "color": "red",
+      "neighbors": [
+        "Chennai",
+        "Bangkok",
+        "Ho Chi Minh City",
+        "Sydney"
+      ],
+      "population": 26063000
+    },
+    {
+      "id": "sydney",
+      "name": "Sydney",
+      "color": "red",
+      "neighbors": [
+        "Jakarta",
+        "Manila",
+        "Los Angeles"
+      ],
+      "population": 3785000
+    }
+  ],
+  "edges": [
+    [
+      "Algiers",
+      "Cairo"
+    ],
+    [
+      "Algiers",
+      "Istanbul"
+    ],
+    [
+      "Algiers",
+      "Madrid"
+    ],
+    [
+      "Algiers",
+      "Paris"
+    ],
+    [
+      "Atlanta",
+      "Chicago"
+    ],
+    [
+      "Atlanta",
+      "Miami"
+    ],
+    [
+      "Atlanta",
+      "Washington"
+    ],
+    [
+      "Baghdad",
+      "Cairo"
+    ],
+    [
+      "Baghdad",
+      "Istanbul"
+    ],
+    [
+      "Baghdad",
+      "Karachi"
+    ],
+    [
+      "Baghdad",
+      "Riyadh"
+    ],
+    [
+      "Baghdad",
+      "Tehran"
+    ],
+    [
+      "Bangkok",
+      "Chennai"
+    ],
+    [
+      "Bangkok",
+      "Ho Chi Minh City"
+    ],
+    [
+      "Bangkok",
+      "Hong Kong"
+    ],
+    [
+      "Bangkok",
+      "Jakarta"
+    ],
+    [
+      "Bangkok",
+      "Kolkata"
+    ],
+    [
+      "Beijing",
+      "Seoul"
+    ],
+    [
+      "Beijing",
+      "Shanghai"
+    ],
+    [
+      "Bogota",
+      "Buenos Aires"
+    ],
+    [
+      "Bogota",
+      "Lima"
+    ],
+    [
+      "Bogota",
+      "Mexico City"
+    ],
+    [
+      "Bogota",
+      "Miami"
+    ],
+    [
+      "Bogota",
+      "Sao Paulo"
+    ],
+    [
+      "Buenos Aires",
+      "Sao Paulo"
+    ],
+    [
+      "Cairo",
+      "Istanbul"
+    ],
+    [
+      "Cairo",
+      "Khartoum"
+    ],
+    [
+      "Cairo",
+      "Riyadh"
+    ],
+    [
+      "Chennai",
+      "Delhi"
+    ],
+    [
+      "Chennai",
+      "Jakarta"
+    ],
+    [
+      "Chennai",
+      "Kolkata"
+    ],
+    [
+      "Chennai",
+      "Mumbai"
+    ],
+    [
+      "Chicago",
+      "Los Angeles"
+    ],
+    [
+      "Chicago",
+      "Mexico City"
+    ],
+    [
+      "Chicago",
+      "Montreal"
+    ],
+    [
+      "Chicago",
+      "San Francisco"
+    ],
+    [
+      "Delhi",
+      "Karachi"
+    ],
+    [
+      "Delhi",
+      "Kolkata"
+    ],
+    [
+      "Delhi",
+      "Mumbai"
+    ],
+    [
+      "Delhi",
+      "Tehran"
+    ],
+    [
+      "Essen",
+      "London"
+    ],
+    [
+      "Essen",
+      "Milan"
+    ],
+    [
+      "Essen",
+      "Paris"
+    ],
+    [
+      "Essen",
+      "St. Petersburg"
+    ],
+    [
+      "Ho Chi Minh City",
+      "Hong Kong"
+    ],
+    [
+      "Ho Chi Minh City",
+      "Jakarta"
+    ],
+    [
+      "Ho Chi Minh City",
+      "Manila"
+    ],
+    [
+      "Hong Kong",
+      "Kolkata"
+    ],
+    [
+      "Hong Kong",
+      "Manila"
+    ],
+    [
+      "Hong Kong",
+      "Shanghai"
+    ],
+    [
+      "Hong Kong",
+      "Taipei"
+    ],
+    [
+      "Istanbul",
+      "Milan"
+    ],
+    [
+      "Istanbul",
+      "Moscow"
+    ],
+    [
+      "Istanbul",
+      "St. Petersburg"
+    ],
+    [
+      "Jakarta",
+      "Sydney"
+    ],
+    [
+      "Johannesburg",
+      "Khartoum"
+    ],
+    [
+      "Johannesburg",
+      "Kinshasa"
+    ],
+    [
+      "Karachi",
+      "Mumbai"
+    ],
+    [
+      "Karachi",
+      "Riyadh"
+    ],
+    [
+      "Karachi",
+      "Tehran"
+    ],
+    [
+      "Khartoum",
+      "Kinshasa"
+    ],
+    [
+      "Khartoum",
+      "Lagos"
+    ],
+    [
+      "Kinshasa",
+      "Lagos"
+    ],
+    [
+      "Lagos",
+      "Sao Paulo"
+    ],
+    [
+      "Lima",
+      "Mexico City"
+    ],
+    [
+      "Lima",
+      "Santiago"
+    ],
+    [
+      "London",
+      "Madrid"
+    ],
+    [
+      "London",
+      "New York"
+    ],
+    [
+      "London",
+      "Paris"
+    ],
+    [
+      "Los Angeles",
+      "Mexico City"
+    ],
+    [
+      "Los Angeles",
+      "San Francisco"
+    ],
+    [
+      "Los Angeles",
+      "Sydney"
+    ],
+    [
+      "Madrid",
+      "New York"
+    ],
+    [
+      "Madrid",
+      "Paris"
+    ],
+    [
+      "Madrid",
+      "Sao Paulo"
+    ],
+    [
+      "Manila",
+      "San Francisco"
+    ],
+    [
+      "Manila",
+      "Sydney"
+    ],
+    [
+      "Manila",
+      "Taipei"
+    ],
+    [
+      "Mexico City",
+      "Miami"
+    ],
+    [
+      "Miami",
+      "Washington"
+    ],
+    [
+      "Milan",
+      "Paris"
+    ],
+    [
+      "Montreal",
+      "New York"
+    ],
+    [
+      "Montreal",
+      "Washington"
+    ],
+    [
+      "Moscow",
+      "St. Petersburg"
+    ],
+    [
+      "Moscow",
+      "Tehran"
+    ],
+    [
+      "New York",
+      "Washington"
+    ],
+    [
+      "Osaka",
+      "Taipei"
+    ],
+    [
+      "Osaka",
+      "Tokyo"
+    ],
+    [
+      "San Francisco",
+      "Tokyo"
+    ],
+    [
+      "Seoul",
+      "Shanghai"
+    ],
+    [
+      "Seoul",
+      "Tokyo"
+    ],
+    [
+      "Shanghai",
+      "Taipei"
+    ],
+    [
+      "Shanghai",
+      "Tokyo"
+    ]
+  ],
+  "wrapEdges": [
+    [
+      "San Francisco",
+      "Tokyo"
+    ],
+    [
+      "San Francisco",
+      "Manila"
+    ],
+    [
+      "Los Angeles",
+      "Sydney"
+    ]
+  ],
+  "populationNote": "Original city card values, transcribed from publisher Survival Scenario1 PDF card illustrations (starting hands and all player card draws). These are game-component values, not current real-world populations."
+}

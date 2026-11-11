@@ -1,0 +1,16 @@
+{
+  "name": "pandemic-command",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "build": "node scripts/check.mjs",
+    "test": "node --test --test-timeout=15000 tests/*.test.mjs",
+    "check": "npm run build && npm test"
+  }
+}

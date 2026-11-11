@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111d25" />
+    <title>Pandemic · 全球防疫指挥中心</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/" class="brand"
+        ><span class="brandmark">✳</span
+        ><span>PANDEMIC<small>全球防疫指挥中心</small></span></a
+      >
+      <div id="connection">本地指挥台</div>
+      <button id="help">规则速查</button>
+    </header>
+    <main id="app"></main>
+    <div id="toast" role="status"></div>
+    <dialog id="modal">
+      <button class="close">关闭 ×</button>
+      <div id="modal-content"></div>
+    </dialog>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
