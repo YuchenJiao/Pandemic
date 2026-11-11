@@ -1,10 +1,7 @@
-# Validation — 2026-11-09 (America/Los_Angeles)
+# Validation — 2026-11-11
 
-- Clean source delivery directory: `npm ci` succeeded.
-- `npm run build`: all syntax and required-file checks passed.
-- `npm test`: 79 tests, 79 passed, 0 failed.
-- All eight combinations of Virulent Strain / Mutation / Lab simulated across 15 seeds each, with cube accounting checked after every transition.
-- HTTP tests cover one, two and four human members; stale commands, ownership, consent, SSE updates and on-disk restart recovery.
-- Browser checks: room creation, multi-role solo lobby, stacked challenges, graph map, legal drive, out-of-station lab rejection, Researcher free sequence, sequence decision and refresh recovery.
-- No public deployment was created. Render deployment has not been performed; instructions and Blueprint are included for the owner.
-- Automated checks validate the covered cases; no claim of exhaustive manual play-testing of every expansion interaction.
+- `npm ci` and `npm run check` succeeded. All 81 tests passed.
+- Board regression tests check all six Pacific route segments, seam alignment, individual disease cubes, role-based pawn colors, both tracks, and the cure and eradication states.
+- HTTP integration tests check the new board module and existing game endpoints. Rules and multiplayer tests from the prior release also passed.
+- A source scan found no Chinese text in the packaged project.
+- Local interactive browser verification was blocked by the browser's access policy. The board checks used its generated markup and the local HTTP integration suite.

@@ -6,6 +6,7 @@ for (const file of [
   "src/catalog.js",
   "src/engine.js",
   "public/app.js",
+  "public/board.js",
 ])
   execFileSync(process.execPath, ["--check", file], { stdio: "inherit" });
 for (const file of [

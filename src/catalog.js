@@ -1,105 +1,180 @@
-import { COLORS } from "./data.js";
+import { CITIES, COLORS } from "./data.js";
+
 export const ROLES = {
   medic: [
-    "医务人员",
-    "治疗移除同色全部方块；自动清除并防止所在城市的已治愈疾病。",
+    "Medic",
+    "Treat Disease removes all cubes of one color. The Medic automatically removes and prevents cubes of cured diseases in their city.",
   ],
-  scientist: ["科学家", "研发解药少需一张城市牌。"],
+  scientist: [
+    "Scientist",
+    "Discover a Cure with one fewer matching City card.",
+  ],
   researcher: [
-    "研究员",
-    "共享知识可给予任意城市牌。实验室：每回合在研究站免费测序一次。",
+    "Researcher",
+    "Give any City card to a player in your city with Share Knowledge. In the Lab Challenge, take a free Sequence a Disease action at a research station once per turn.",
   ],
   dispatcher: [
-    "调度员",
-    "使用自己的牌移动其他角色；也可将任意角色移至另一角色所在城市，须征得同意。",
+    "Dispatcher",
+    "Move other pawns with permission using your own cards, or move a pawn to a city containing another pawn.",
   ],
   operations_expert: [
-    "行动专家",
-    "建站无需城市牌；每回合一次从研究站弃任意城市牌飞往任意城市。",
+    "Operations Expert",
+    "Build a research station without a City card. Once per turn, discard any City card to move from a research station to any city.",
   ],
-  quarantine_specialist: ["检疫专家", "阻止所在城市及相邻城市放置方块与爆发。"],
+  quarantine_specialist: [
+    "Quarantine Specialist",
+    "Prevent disease cubes and outbreaks in your city and all connected cities.",
+  ],
   contingency_planner: [
-    "应急规划师",
-    "花一次行动回收一张弃置事件，独立存储；使用后移出游戏。",
+    "Contingency Planner",
+    "Use an action to store one Event card from the Player Discard Pile outside your hand. Remove it from the game after playing it.",
   ],
   archivist: [
-    "档案管理员",
-    "手牌上限8；每回合一次花行动从弃牌回收所在城市牌。",
+    "Archivist",
+    "Your hand limit is eight cards. Once per turn, spend an action to retrieve your current City card from the Player Discard Pile.",
   ],
-  generalist: ["全能专家", "每回合5次行动。"],
+  generalist: ["Generalist", "Take up to five actions per turn."],
   containment_specialist: [
-    "防疫专家",
-    "进入城市时，对其中每种至少2个的疾病方块移除1个。",
+    "Containment Specialist",
+    "When you enter a city, remove one cube of each disease that has at least two cubes there.",
   ],
   epidemiologist: [
-    "流行病学家",
-    "每回合免费向同城角色拿任意城市牌一次。实验室：在研究站免费处理样本一次。",
+    "Epidemiologist",
+    "Once per turn, take any City card from another player in your city without spending an action. In the Lab Challenge, you can also Process a Sample for free at a research station once per turn.",
   ],
   field_operative: [
-    "现场特工",
-    "每回合花行动采集所在城市的1个方块；研发时可用3个同色样本替换恰好2张城市牌。",
+    "Field Operative",
+    "Once per turn, take one disease cube from your city as a sample for one action. Three samples of a disease can replace two City cards when you Discover a Cure for it.",
   ],
   troubleshooter: [
-    "应变专家",
-    "回合开始查看感染率张感染牌；直飞展示城市牌而不弃置。",
+    "Troubleshooter",
+    "At the start of your turn, look at the next Infection cards up to the current infection rate. Reveal the destination City card instead of discarding it for Direct Flight.",
   ],
   field_director: [
-    "现场主管",
-    "可治疗邻城；每回合免费让自己所在或邻城的其他角色移动到其邻城一次。",
+    "Field Director",
+    "Treat Disease in your city or a connected city. Once per turn, move another pawn in either location one Drive / Ferry connection for free.",
   ],
   virologist: [
-    "病毒学家",
-    "研发时可用任意同色的两张城市牌替代1张所需牌；可花行动弃城市牌远程移除对应颜色1个方块。",
+    "Virologist",
+    "A pair of City cards of the same color can replace a required card when you Discover a Cure. As an action, discard a City card to remove one cube of that color from any city.",
   ],
   local_liaison: [
-    "地区联络员",
-    "每回合花行动将匹配自己城市颜色的牌给予身处同色城市的角色一次；实验室可免费定性或测试一次。",
+    "Local Liaison",
+    "Once per turn, use an action to give a City card matching your city's color to a player in a city of that color. In the Lab Challenge, take one free Characterize a Disease or Test a Cure action at a research station per turn.",
   ],
   pilot: [
-    "飞行员",
-    "不能普通移动或建站；花行动飞往距离不超过3条连线的城市，可搭载同城一名同伴。",
+    "Pilot",
+    "Fly up to three connections in one action and optionally carry another pawn from the departure city. The Pilot cannot use standard movement actions or Build a Research Station.",
   ],
 };
 export const BASE_ROLES = Object.keys(ROLES).slice(0, 7);
+
+// Pawn colors follow the components and Role card icons in the three rulebooks.
+export const ROLE_PAWN_COLORS = {
+  medic: "#f78325",
+  scientist: "#f7f7f2",
+  researcher: "#9b6744",
+  dispatcher: "#da4ca5",
+  operations_expert: "#8bc64a",
+  quarantine_specialist: "#146448",
+  contingency_planner: "#64c6c3",
+  archivist: "#508fdb",
+  generalist: "#a5a6a5",
+  containment_specialist: "#efd4a3",
+  epidemiologist: "#ed8a9f",
+  field_operative: "#e9e72b",
+  troubleshooter: "#dc242c",
+  field_director: "#9d0759",
+  virologist: "#00ae63",
+  local_liaison: "#f3a6cc",
+  pilot: "#75cae9",
+};
+
 export const EVENTS = {
-  airlift: ["空中运输", "将任意角色移到任意城市。"],
-  forecast: ["预测", "查看并重排顶端最多6张感染牌。"],
-  government_grant: ["政府拨款", "任意城市免费建研究站。"],
-  one_quiet_night: ["平静的一夜", "跳过下一次感染城市阶段。"],
-  resilient_population: ["人口韧性", "永久移除感染弃牌堆中的一张城市牌。"],
-  borrowed_time: ["借来的时间", "当前行动阶段增加2次行动。"],
+  airlift: ["Airlift", "Move a pawn to any city with its player's permission."],
+  forecast: [
+    "Forecast",
+    "Look at up to six cards on top of the Infection Deck and reorder them.",
+  ],
+  government_grant: [
+    "Government Grant",
+    "Build a research station in any city without spending an action or City card.",
+  ],
+  one_quiet_night: ["One Quiet Night", "Skip the next Infect Cities step."],
+  resilient_population: [
+    "Resilient Population",
+    "Remove one City card in the Infection Discard Pile from the game.",
+  ],
+  borrowed_time: [
+    "Borrowed Time",
+    "The current player takes two extra actions this turn.",
+  ],
   commercial_travel_ban: [
-    "商业旅行禁令",
-    "感染率降至1，直到当前角色下回合开始。",
+    "Commercial Travel Ban",
+    "The effective infection rate is one until the current player's next turn.",
   ],
-  mobile_hospital: ["流动医院", "本回合每次驾车/渡船抵达城市时移除1个方块。"],
-  new_assignment: ["新任务", "让一名角色换成未使用的职业。"],
+  mobile_hospital: [
+    "Mobile Hospital",
+    "Remove one disease cube each time a Drive / Ferry move arrives in a city this turn.",
+  ],
+  new_assignment: [
+    "New Assignment",
+    "Replace a player's role with an unused role.",
+  ],
   rapid_vaccine_deployment: [
-    "快速疫苗部署",
-    "研发后立即移除该疾病1–5个方块，所选城市须连通。",
+    "Rapid Vaccine Deployment",
+    "Immediately after Discover a Cure, remove up to five cubes of that disease. If selecting multiple cities, each must connect to another selected city.",
   ],
-  reexamined_research: ["重新审视研究", "一名角色拿回弃牌堆中的一张城市牌。"],
-  remote_treatment: ["远程治疗", "移除地图上2个方块。"],
-  special_orders: ["特别指令", "本回合当前角色可移动指定另一角色。"],
-  infection_zone_ban: ["疫区封锁", "直到出牌角色下回合，忽略连锁爆发。"],
+  reexamined_research: [
+    "Re-Examined Research",
+    "Return one City card from the Player Discard Pile to a player's hand.",
+  ],
+  remote_treatment: [
+    "Remote Treatment",
+    "Remove two disease cubes from the board.",
+  ],
+  special_orders: [
+    "Special Orders",
+    "The current player may move one chosen pawn this turn.",
+  ],
+  infection_zone_ban: [
+    "Infection Zone Ban",
+    "Ignore chain reaction outbreaks until the start of your next turn.",
+  ],
   improved_sanitation: [
-    "改善卫生",
-    "直到出牌角色下回合，治疗额外移除同色1个方块。",
+    "Improved Sanitation",
+    "Remove one additional cube of the same color whenever Treat Disease is used until your next turn.",
   ],
-  sequencing_breakthrough: ["测序突破", "下一次研发少需1张城市牌。"],
+  sequencing_breakthrough: [
+    "Sequencing Breakthrough",
+    "The next Discover a Cure action requires one fewer City card.",
+  ],
 };
 export const BASE_EVENTS = Object.keys(EVENTS).slice(0, 5);
 export const STRAINS = {
-  chronic_effect: ["慢性效应", true],
-  complex_molecular_structure: ["复杂分子结构", true],
-  government_interference: ["政府干预", true],
-  rate_effect: ["速率效应", true],
-  slippery_slope: ["滑坡效应", true],
-  hidden_pocket: ["隐蔽病灶", false],
-  unacceptable_loss: ["不可接受的损失", false],
-  uncounted_populations: ["遗漏人口", false],
-  highly_contagious: ["高度传染", true],
-  resistant_to_treatment: ["抗治疗性", true],
+  chronic_effect: ["Chronic Effect", true],
+  complex_molecular_structure: ["Complex Molecular Structure", true],
+  government_interference: ["Government Interference", true],
+  rate_effect: ["Rate Effect", true],
+  slippery_slope: ["Slippery Slope", true],
+  hidden_pocket: ["Hidden Pocket", false],
+  unacceptable_loss: ["Unacceptable Loss", false],
+  uncounted_populations: ["Uncounted Populations", false],
+  highly_contagious: ["Highly Contagious", true],
+  resistant_to_treatment: ["Resistant to Treatment", true],
+};
+
+export const MUTATION_EVENT_NAMES = {
+  threatens: "The Mutation Threatens!",
+  spreads: "The Mutation Spreads",
+  intensifies: "The Mutation Intensifies!",
+};
+
+export const LAB_ACTION_NAMES = {
+  characterize: "Characterize a Disease",
+  process: "Process a Sample",
+  test: "Test a Cure",
+  sequence: "Sequence a Disease",
 };
 const mono = ["blue", "yellow", "black", "red"].map((c) => ({
   eligible: [c],
@@ -133,17 +208,16 @@ export const DISHES = [
   "separator",
   "growth",
 ];
-export const ACTION_LABELS = {
-  move: "移动",
-  build: "建立研究站",
-  treat: "治疗疾病",
-  share: "共享知识",
-  cure: "研发解药",
-  pass: "跳过行动",
-  end: "结束行动",
-  advance: "继续回合结算",
-  lab: "实验室行动",
-  role: "职业能力",
-  event: "使用事件",
-  discard: "超限弃牌",
-};
+
+export function cardName(id) {
+  if (id === "hidden") return "Hidden card";
+  if (CITIES[id]) return CITIES[id].name;
+  if (id?.startsWith("event:")) return EVENTS[id.slice(6)]?.[0] ?? id;
+  if (id?.startsWith("mutation:"))
+    return MUTATION_EVENT_NAMES[id.slice(9)] ?? "Mutation Event";
+  if (id?.startsWith("mutation-")) return "Mutation";
+  if (id === "epidemic:normal") return "Epidemic";
+  if (id?.startsWith("epidemic:"))
+    return STRAINS[id.slice(9)]?.[0] ?? "Virulent Strain Epidemic";
+  return id ?? "";
+}

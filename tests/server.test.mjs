@@ -227,6 +227,7 @@ test("1-person game uses 2 roles; SSE receives version updates; scripts/static r
     for (const route of [
       "/",
       "/app.js",
+      "/board.js",
       "/style.css",
       "/src/data.js",
       "/src/catalog.js",

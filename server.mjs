@@ -113,31 +113,35 @@ export function createApp({
           bucket = { at: now, count: 0 };
           limits.set(ip, bucket);
         }
-        fail(++bucket.count <= 1200, "请求过于频繁", 429);
+        fail(++bucket.count <= 1200, "Too many requests.", 429);
         let body = {};
         if (req.method === "POST") {
           const origin = req.headers.origin;
           fail(
             !origin || new URL(origin).host === req.headers.host,
-            "不允许跨站写入",
+            "Cross-origin writes are not allowed.",
             403,
           );
           let raw = "";
           for await (const part of req) {
             raw += part;
-            fail(raw.length <= 65536, "请求过大", 413);
+            fail(raw.length <= 65536, "Request is too large.", 413);
           }
           try {
             body = raw ? JSON.parse(raw) : {};
           } catch {
-            fail(false, "JSON格式无效");
+            fail(false, "Invalid JSON.");
           }
         }
         const name = (n) =>
           typeof n === "string" && n.trim().length > 0 && n.trim().length <= 24;
         if (url.pathname === "/api/rooms" && req.method === "POST") {
-          fail(name(body.name), "昵称为1–24个字符");
-          fail(rooms.size < 2000, "房间容量已满", 503);
+          fail(name(body.name), "Enter a name between 1 and 24 characters.");
+          fail(
+            rooms.size < 2000,
+            "The server has reached its room limit.",
+            503,
+          );
           let code;
           do {
             code = Array.from(
@@ -183,15 +187,21 @@ export function createApp({
         const match = url.pathname.match(
           /^\/api\/rooms\/([A-Z2-9]{6})(?:\/(join|stream|lobby|start|action|approve))?$/,
         );
-        fail(match, "接口不存在", 404);
+        fail(match, "Endpoint not found.", 404);
         const r = rooms.get(match[1]);
-        fail(r, "房间不存在或已过期", 404);
+        fail(r, "Room not found or expired.", 404);
         const route = match[2];
         if (route === "join" && req.method === "POST") {
-          fail(!r.game, "游戏已开始；请用原浏览器恢复身份");
-          fail(r.members.length < 4, "最多4名玩家");
-          fail(name(body.name), "昵称为1–24个字符");
-          fail(r.seats.length < 4, "房间角色已满，请房主先移除多余角色");
+          fail(
+            !r.game,
+            "The game has started. Reconnect with your original credentials.",
+          );
+          fail(r.members.length < 4, "A room can have at most four players.");
+          fail(name(body.name), "Enter a name between 1 and 24 characters.");
+          fail(
+            r.seats.length < 4,
+            "All role slots are full. Ask the host to remove an extra role.",
+          );
           const m = {
             id: crypto.randomUUID(),
             name: body.name.trim(),
@@ -213,7 +223,11 @@ export function createApp({
           req.headers.authorization?.replace(/^Bearer /, "") ||
           url.searchParams.get("token");
         const m = r.members.find((x) => x.token === auth);
-        fail(m, "身份已失效，请恢复原来的房间凭据", 401);
+        fail(
+          m,
+          "Your session has expired. Reconnect with your original credentials.",
+          401,
+        );
         if (route === "stream" && req.method === "GET") {
           res.writeHead(200, {
             "content-type": "text/event-stream",
@@ -241,21 +255,29 @@ export function createApp({
           return;
         }
         if (!route && req.method === "GET") return json(200, publicRoom(r, m));
-        fail(req.method === "POST", "方法不支持", 405);
-        fail(body.version === r.version, "状态已更新，请按新状态重试", 409);
+        fail(req.method === "POST", "Method not allowed.", 405);
+        fail(
+          body.version === r.version,
+          "The room has changed. Try again with the latest state.",
+          409,
+        );
         const next = snapshot(r);
         if (route === "lobby") {
-          fail(!r.game, "游戏已开始");
+          fail(!r.game, "The game has already started.");
           if (body.op === "seatRole") {
             const seat = next.seats.find((x) => x.id === body.seat);
-            fail(seat && seat.owner === m.id, "只能选择自己的职业", 403);
+            fail(
+              seat && seat.owner === m.id,
+              "You may choose only your own role.",
+              403,
+            );
             fail(
               body.role === null || rolePool(r.options).includes(body.role),
-              "职业不可用",
+              "That role is unavailable.",
             );
             seat.role = body.role;
           } else {
-            fail(m.id === r.host, "仅房主可操作", 403);
+            fail(m.id === r.host, "Only the host may do that.", 403);
             if (body.op === "options") {
               for (const key of [
                 "virulent",
@@ -265,7 +287,10 @@ export function createApp({
                 "worldwide",
               ])
                 if (key in body.options) {
-                  fail(typeof body.options[key] === "boolean", "设置无效");
+                  fail(
+                    typeof body.options[key] === "boolean",
+                    "Invalid settings.",
+                  );
                   next.options[key] = body.options[key];
                 }
               if ("epidemics" in body.options) {
@@ -273,7 +298,7 @@ export function createApp({
                   Number.isInteger(body.options.epidemics) &&
                     body.options.epidemics >= 4 &&
                     body.options.epidemics <= 7,
-                  "疫情数量无效",
+                  "Invalid Epidemic card count.",
                 );
                 next.options.epidemics = body.options.epidemics;
               }
@@ -282,7 +307,10 @@ export function createApp({
                 if (!rolePool(next.options).includes(seat.role))
                   seat.role = null;
             } else if (body.op === "addSeat") {
-              fail(next.seats.length < 4, "最多4名角色");
+              fail(
+                next.seats.length < 4,
+                "A game can have at most four roles.",
+              );
               next.seats.push({
                 id: crypto.randomUUID(),
                 owner: m.id,
@@ -293,20 +321,24 @@ export function createApp({
               const seat = next.seats.find((x) => x.id === body.seat);
               fail(
                 seat && seat.owner === m.id && next.seats.length > 1,
-                "只能移除房主自己的多余角色",
+                "The host may remove only their own extra roles.",
               );
               next.seats = next.seats.filter((x) => x.id !== body.seat);
-            } else fail(false, "大厅操作无效");
+            } else fail(false, "Invalid lobby operation.");
           }
         } else if (route === "start") {
-          fail(m.id === r.host && !r.game, "仅房主可开始新局", 403);
+          fail(
+            m.id === r.host && !r.game,
+            "Only the host may start the game.",
+            403,
+          );
           next.game = newGame(r.seats, r.options);
           invariants(next.game);
         } else if (route === "action") {
-          fail(r.game, "游戏尚未开始");
-          fail(!r.approval, "请先处理待确认的协作操作");
+          fail(r.game, "The game has not started.");
+          fail(!r.approval, "Resolve the pending consent request first.");
           const p = r.game.players.find((x) => x.id === body.actor);
-          fail(p && p.owner === m.id, "不能操控其他玩家的角色", 403);
+          fail(p && p.owner === m.id, "You do not control that role.", 403);
           // Validate first; no hidden information is returned or state committed during this dry run.
           apply(r.game, body.actor, body.action);
           const needed = [
@@ -326,17 +358,23 @@ export function createApp({
             };
           else execute(next, body.actor, body.action);
         } else if (route === "approve") {
-          fail(r.approval && body.id === r.approval.id, "确认请求已过期");
+          fail(
+            r.approval && body.id === r.approval.id,
+            "The consent request has expired.",
+          );
           fail(
             r.approval.needed.includes(m.id) ||
               r.game.players.find((p) => p.id === r.approval.actor)?.owner ===
                 m.id,
-            "你无需确认此操作",
+            "Your consent is not required.",
             403,
           );
           if (!body.accept) next.approval = null;
           else {
-            fail(r.approval.needed.includes(m.id), "发起者无需确认");
+            fail(
+              r.approval.needed.includes(m.id),
+              "The requester does not need to approve.",
+            );
             next.approval.approved = [
               ...new Set([...next.approval.approved, m.id]),
             ];
@@ -349,21 +387,26 @@ export function createApp({
               next.approval = null;
             }
           }
-        } else fail(false, "接口不存在", 404);
+        } else fail(false, "Endpoint not found.", 404);
         commit(next);
         rooms.set(next.code, next);
         return json(200, publicRoom(next, m));
       }
-      fail(req.method === "GET" || req.method === "HEAD", "方法不支持", 405);
+      fail(
+        req.method === "GET" || req.method === "HEAD",
+        "Method not allowed.",
+        405,
+      );
       const paths = {
         "/": "public/index.html",
         "/app.js": "public/app.js",
+        "/board.js": "public/board.js",
         "/style.css": "public/style.css",
         "/src/data.js": "src/data.js",
         "/src/catalog.js": "src/catalog.js",
       };
       const relative = paths[url.pathname];
-      fail(relative, "页面不存在", 404);
+      fail(relative, "Page not found.", 404);
       const ext = path.extname(relative),
         mime = {
           ".html": "text/html",
@@ -385,7 +428,7 @@ export function createApp({
       if (status === 500) console.error(e);
       if (!res.headersSent)
         json(status, {
-          error: status === 500 ? "服务器错误，请稍后重试" : e.message,
+          error: status === 500 ? "Server error. Please try again." : e.message,
         });
       else res.end();
     }

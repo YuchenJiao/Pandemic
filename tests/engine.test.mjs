@@ -770,8 +770,8 @@ test("private hands at Standard, shared at Introductory, drawing log never leaks
   s.options.epidemics = 5;
   s.playerDeck = ["london", "paris"];
   s = run(s, { type: "advance" });
-  assert.ok(!s.log.at(-1).includes("伦敦"));
-  assert.ok(!s.log.at(-1).includes("巴黎"));
+  assert.ok(!s.log.at(-1).includes("London"));
+  assert.ok(!s.log.at(-1).includes("Paris"));
 });
 test("Troubleshooter only sees turn-start snapshot, not refreshed top cards", () => {
   let s = game({ expansionCards: true }, ["troubleshooter", "medic"]);

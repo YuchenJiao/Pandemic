@@ -65,3 +65,10 @@ The final wildcard was directly checked against component photograph 1785414: fo
 `npm test` checks the printed map graph, initial distribution and epidemic stacks; all eight combinations of the three main challenges over 15 seeds each; legal/illegal actions and transactional rejection; all base and expansion roles; mutation placement and victory; Virulent Strain interactions; sample processing, growth exhaustion, characterization/test/cure, second-line opening and replacement; event timing and privacy; server ownership, consent, stale state rejection, SSE updates and persistence across process restart.
 
 These checks are executable evidence for covered scenarios. They are not a claim that every theoretical combination of expansion cards has been manually play-tested. The research files retained alongside this document record the underlying rules investigation.
+
+
+## Board presentation
+
+The base game rulebook's setup spread establishes the track and deck positions. The Outbreaks Track is vertical on the left, the Infection Deck and Infection Discard Pile are above the map, and the Infection Rate Track progresses from left to right under those decks. The Player Deck, Player Discard Pile, and Discovered Cure Indicators are below the map. The original cure marker's eradication face is represented by the slashed-circle symbol.
+
+Role pawn colors were checked against the base game Role card icons on page 8 and the component illustrations in the On the Brink and In the Lab rulebooks. The three Pacific routes each have two visible edge segments. Their west and east endpoints align across the map seam. The artwork is independently drawn.

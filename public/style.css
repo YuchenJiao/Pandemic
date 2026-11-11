@@ -294,43 +294,241 @@ main {
 .boardwrap {
   min-width: 0;
 }
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.metric {
-  padding: 12px 15px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #12232d;
-}
-.metric label {
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-.metric b {
-  font: 24px monospace;
-  display: block;
-  margin-top: 5px;
-}
-.metric span {
-  color: var(--muted);
-  font-size: 12px;
-}
 .boardframe {
-  position: relative;
   background: radial-gradient(ellipse at 40% 45%, #1c3844, #101e28 75%);
   border: 1px solid #36515b;
   border-radius: 12px;
-  overflow: auto;
+  overflow-x: auto;
 }
-.boardframe svg {
+.tabletop {
+  min-width: 820px;
+}
+.board-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 18px 0;
+}
+.infection-area {
+  width: min(420px, 100%);
+}
+.board-decks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.board-deck {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70px;
+  min-width: 0;
+  padding: 9px 38px 9px 12px;
+  border: 1px solid #4d8583;
+  border-radius: 7px;
+  text-align: left;
+  color: #e5eff4;
+  background: linear-gradient(145deg, #153d3f, #102c33);
+}
+.board-deck.player-deck {
+  background: linear-gradient(145deg, #19384e, #102b3c);
+  border-color: #527c98;
+}
+.board-deck.discard-pile {
+  background: #14232d;
+  border-style: dashed;
+}
+.deck-label {
+  font-size: 12px;
+  font-weight: 700;
+}
+.deck-detail {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 3px;
+}
+.deck-count {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  font: 700 12px monospace;
+  padding: 3px 5px;
+  border: 1px solid #699398;
+  border-radius: 4px;
+}
+.board-center {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  align-items: stretch;
+}
+.city-map {
   display: block;
   width: 100%;
-  min-width: 780px;
-  aspect-ratio: 1.95;
+  height: auto;
+  border-left: 1px solid #35515b;
+}
+.board-track h3,
+.board-cures h3 {
+  margin: 0 0 7px;
+  color: #c6d8e2;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.board-track ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 7px;
+}
+.infection-track {
+  margin-top: 12px;
+}
+.infection-track ol {
+  justify-content: space-between;
+}
+.track-space {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #527382;
+  border-radius: 50%;
+  background: #10242e;
+  color: #c7d7df;
+  font: 700 13px monospace;
+}
+.track-space.current {
+  color: #fff;
+}
+.track-space span {
+  position: relative;
+}
+.track-marker {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: #26855f;
+  outline: 2px solid #a4f4bc;
+  outline-offset: 2px;
+  border: 1px solid #d2ffd9;
+  color: #fff;
+  box-shadow:
+    inset 0 -3px #0003,
+    0 0 12px #5bdc7440;
+}
+.outbreak-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+  padding: 2px 7px;
+}
+.outbreak-track h3 {
+  text-align: center;
+}
+.outbreak-track ol {
+  flex: 1;
+  width: 64px;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 0;
+}
+.outbreak-track .track-space {
+  border-radius: 8px;
+}
+.outbreak-track .track-space:nth-child(even) {
+  align-self: flex-end;
+}
+.outbreak-track .loss-space {
+  border-color: #d56b77;
+  color: #ffa8b0;
+}
+.outbreak-track .loss-space .track-marker {
+  background: #942d3a;
+  outline-color: #ff8d98;
+  color: #fff;
+}
+.rate-override {
+  display: block;
+  margin-top: 8px;
+  color: #e8cd81;
+}
+.board-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 37%);
+  gap: 16px;
+  align-items: end;
+  padding: 10px 18px 16px 18px;
+}
+.cure-slots {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.cure-slot {
+  flex: 1 1 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 7px 4px;
+  border: 1px solid #38505e;
+  border-radius: 6px;
+  background: #10242f;
+  text-align: center;
+}
+.cure-color {
+  font-size: 12px;
+  font-weight: 700;
+}
+.cure-slot small {
+  font-size: 10px;
+}
+.cure-slot .virulent-label {
+  color: #efc569;
+}
+.cure-vial {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 19px;
+  margin-top: 5px;
+  border: 1px dashed #82949c;
+  border-radius: 4px;
+  color: #fff;
+  font: 700 18px/1 sans-serif;
+}
+.cure-vial::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 4px;
+  width: 11px;
+  height: 4px;
+  border: inherit;
+  border-bottom: 0;
+  border-radius: 2px 2px 0 0;
+  background: inherit;
+}
+.cure-slot[data-status="cured"] .cure-vial,
+.cure-slot[data-status="eradicated"] .cure-vial {
+  background: var(--disease-color);
+  border: 1px solid #c1d7e1;
+}
+.pawn-dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--pawn-color);
+  border: 1px solid #c1d7e160;
+  margin-right: 5px;
 }
 .map-grid {
   stroke: #72909f;
@@ -378,21 +576,28 @@ main {
   stroke-width: 3px;
   stroke-linejoin: round;
 }
-.city .en {
-  font: 8px sans-serif;
-  fill: #849da9;
+.disease-cube {
+  stroke: #bfcede;
+  stroke-width: 0.5px;
 }
-.city .cube-label {
-  font: bold 10px monospace;
-  fill: #15232b;
+.cube-top {
+  fill: #fff;
+  fill-opacity: 0.25;
+  stroke: none;
+}
+.cube-side {
+  fill: #000;
+  fill-opacity: 0.23;
+  stroke: none;
 }
 .city .station {
-  fill: #a6f3df;
-  font: 18px sans-serif;
+  fill: #f0d99e;
+  stroke: #695c44;
+  stroke-width: 1px;
 }
 .city .pawn {
-  stroke: #101a23;
-  stroke-width: 1.5;
+  stroke: #e3f0f1;
+  stroke-width: 0.75px;
 }
 .mapfooter {
   display: flex;
@@ -401,28 +606,6 @@ main {
   font-size: 11px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-}
-.diseases {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-  margin: 14px 0;
-}
-.disease {
-  border: 1px solid var(--line);
-  border-radius: 7px;
-  background: #13232d;
-  padding: 9px 12px;
-  flex: 1;
-  min-width: 110px;
-}
-.disease b {
-  font-size: 12px;
-  display: block;
-  margin-bottom: 4px;
-}
-.disease small {
-  font: 11px monospace;
 }
 .square {
   display: inline-block;
@@ -763,9 +946,6 @@ dialog h2 {
   .dashboard {
     grid-template-columns: 1fr 350px;
   }
-  .boardframe svg {
-    min-height: 580px;
-  }
 }
 @media (max-width: 1050px) {
   main {
@@ -786,9 +966,6 @@ dialog h2 {
   }
   .home {
     gap: 30px;
-  }
-  .boardframe svg {
-    min-width: 900px;
   }
 }
 @media (max-width: 680px) {
@@ -830,15 +1007,6 @@ dialog h2 {
   .roomhead small {
     margin-left: 0;
   }
-  .metrics {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .metric {
-    padding: 9px 12px;
-  }
-  .metric b {
-    font-size: 21px;
-  }
   .gamehead {
     flex-wrap: wrap;
   }
@@ -854,14 +1022,8 @@ dialog h2 {
   .researchlines {
     grid-template-columns: 1fr;
   }
-  .disease {
-    min-width: 90px;
-  }
-  .boardframe {
-    max-height: 65vh;
-  }
-  .boardframe svg {
-    min-width: 1100px;
+  .tabletop {
+    min-width: 820px;
   }
   .mapfooter {
     flex-wrap: wrap;

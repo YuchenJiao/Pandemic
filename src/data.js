@@ -1,10 +1,11 @@
+export const INFECTION_RATES = [2, 2, 2, 3, 3, 4, 4];
 export const COLORS = ["blue", "yellow", "black", "red", "purple"];
-export const CN = {
-  blue: "蓝色",
-  yellow: "黄色",
-  black: "黑色",
-  red: "红色",
-  purple: "紫色",
+export const DISEASE_NAMES = {
+  blue: "Blue",
+  yellow: "Yellow",
+  black: "Black",
+  red: "Red",
+  purple: "Purple",
 };
 export const CITIES = {
   "san-francisco": {
@@ -12,7 +13,7 @@ export const CITIES = {
     name: "San Francisco",
     color: "blue",
     population: 5864000,
-    zh: "旧金山",
+
     x: 95,
     y: 190,
   },
@@ -21,7 +22,7 @@ export const CITIES = {
     name: "Chicago",
     color: "blue",
     population: 9121000,
-    zh: "芝加哥",
+
     x: 235,
     y: 150,
   },
@@ -30,7 +31,7 @@ export const CITIES = {
     name: "Montreal",
     color: "blue",
     population: 3429000,
-    zh: "蒙特利尔",
+
     x: 325,
     y: 120,
   },
@@ -39,7 +40,7 @@ export const CITIES = {
     name: "New York",
     color: "blue",
     population: 20464000,
-    zh: "纽约",
+
     x: 415,
     y: 170,
   },
@@ -48,7 +49,7 @@ export const CITIES = {
     name: "Washington",
     color: "blue",
     population: 4679000,
-    zh: "华盛顿",
+
     x: 365,
     y: 235,
   },
@@ -57,7 +58,7 @@ export const CITIES = {
     name: "Atlanta",
     color: "blue",
     population: 4715000,
-    zh: "亚特兰大",
+
     x: 275,
     y: 250,
   },
@@ -66,7 +67,7 @@ export const CITIES = {
     name: "London",
     color: "blue",
     population: 8586000,
-    zh: "伦敦",
+
     x: 530,
     y: 130,
   },
@@ -75,7 +76,7 @@ export const CITIES = {
     name: "Madrid",
     color: "blue",
     population: 5427000,
-    zh: "马德里",
+
     x: 510,
     y: 260,
   },
@@ -84,7 +85,7 @@ export const CITIES = {
     name: "Paris",
     color: "blue",
     population: 10755000,
-    zh: "巴黎",
+
     x: 590,
     y: 210,
   },
@@ -93,7 +94,7 @@ export const CITIES = {
     name: "Essen",
     color: "blue",
     population: 575000,
-    zh: "埃森",
+
     x: 625,
     y: 110,
   },
@@ -102,7 +103,7 @@ export const CITIES = {
     name: "Milan",
     color: "blue",
     population: 5232000,
-    zh: "米兰",
+
     x: 660,
     y: 180,
   },
@@ -111,7 +112,7 @@ export const CITIES = {
     name: "St. Petersburg",
     color: "blue",
     population: 4879000,
-    zh: "圣彼得堡",
+
     x: 745,
     y: 90,
   },
@@ -120,7 +121,7 @@ export const CITIES = {
     name: "Los Angeles",
     color: "yellow",
     population: 14900000,
-    zh: "洛杉矶",
+
     x: 135,
     y: 300,
   },
@@ -129,7 +130,7 @@ export const CITIES = {
     name: "Mexico City",
     color: "yellow",
     population: 19463000,
-    zh: "墨西哥城",
+
     x: 225,
     y: 355,
   },
@@ -138,7 +139,7 @@ export const CITIES = {
     name: "Miami",
     color: "yellow",
     population: 5582000,
-    zh: "迈阿密",
+
     x: 340,
     y: 320,
   },
@@ -147,7 +148,7 @@ export const CITIES = {
     name: "Bogota",
     color: "yellow",
     population: 8702000,
-    zh: "波哥大",
+
     x: 325,
     y: 425,
   },
@@ -156,7 +157,7 @@ export const CITIES = {
     name: "Lima",
     color: "yellow",
     population: 9121000,
-    zh: "利马",
+
     x: 280,
     y: 505,
   },
@@ -165,7 +166,7 @@ export const CITIES = {
     name: "Santiago",
     color: "yellow",
     population: 6015000,
-    zh: "圣地亚哥",
+
     x: 290,
     y: 600,
   },
@@ -174,7 +175,7 @@ export const CITIES = {
     name: "Buenos Aires",
     color: "yellow",
     population: 13639000,
-    zh: "布宜诺斯艾利斯",
+
     x: 425,
     y: 565,
   },
@@ -183,7 +184,7 @@ export const CITIES = {
     name: "Sao Paulo",
     color: "yellow",
     population: 20186000,
-    zh: "圣保罗",
+
     x: 470,
     y: 480,
   },
@@ -192,7 +193,7 @@ export const CITIES = {
     name: "Lagos",
     color: "yellow",
     population: 11547000,
-    zh: "拉各斯",
+
     x: 590,
     y: 385,
   },
@@ -201,7 +202,7 @@ export const CITIES = {
     name: "Kinshasa",
     color: "yellow",
     population: 9046000,
-    zh: "金沙萨",
+
     x: 655,
     y: 465,
   },
@@ -210,7 +211,7 @@ export const CITIES = {
     name: "Johannesburg",
     color: "yellow",
     population: 3888000,
-    zh: "约翰内斯堡",
+
     x: 705,
     y: 540,
   },
@@ -219,7 +220,7 @@ export const CITIES = {
     name: "Khartoum",
     color: "yellow",
     population: 4887000,
-    zh: "喀土穆",
+
     x: 715,
     y: 365,
   },
@@ -228,7 +229,7 @@ export const CITIES = {
     name: "Algiers",
     color: "black",
     population: 2946000,
-    zh: "阿尔及尔",
+
     x: 610,
     y: 290,
   },
@@ -237,7 +238,7 @@ export const CITIES = {
     name: "Cairo",
     color: "black",
     population: 14718000,
-    zh: "开罗",
+
     x: 695,
     y: 290,
   },
@@ -246,7 +247,7 @@ export const CITIES = {
     name: "Istanbul",
     color: "black",
     population: 13576000,
-    zh: "伊斯坦布尔",
+
     x: 735,
     y: 210,
   },
@@ -255,7 +256,7 @@ export const CITIES = {
     name: "Moscow",
     color: "black",
     population: 15512000,
-    zh: "莫斯科",
+
     x: 835,
     y: 135,
   },
@@ -264,7 +265,7 @@ export const CITIES = {
     name: "Baghdad",
     color: "black",
     population: 6204000,
-    zh: "巴格达",
+
     x: 815,
     y: 275,
   },
@@ -273,7 +274,7 @@ export const CITIES = {
     name: "Tehran",
     color: "black",
     population: 7419000,
-    zh: "德黑兰",
+
     x: 895,
     y: 210,
   },
@@ -282,7 +283,7 @@ export const CITIES = {
     name: "Riyadh",
     color: "black",
     population: 5037000,
-    zh: "利雅得",
+
     x: 795,
     y: 350,
   },
@@ -291,7 +292,7 @@ export const CITIES = {
     name: "Karachi",
     color: "black",
     population: 20711000,
-    zh: "卡拉奇",
+
     x: 915,
     y: 330,
   },
@@ -300,7 +301,7 @@ export const CITIES = {
     name: "Mumbai",
     color: "black",
     population: 16910000,
-    zh: "孟买",
+
     x: 940,
     y: 415,
   },
@@ -309,7 +310,7 @@ export const CITIES = {
     name: "Delhi",
     color: "black",
     population: 22242000,
-    zh: "德里",
+
     x: 995,
     y: 265,
   },
@@ -318,7 +319,7 @@ export const CITIES = {
     name: "Chennai",
     color: "black",
     population: 8865000,
-    zh: "金奈",
+
     x: 1010,
     y: 475,
   },
@@ -327,7 +328,7 @@ export const CITIES = {
     name: "Kolkata",
     color: "black",
     population: 14374000,
-    zh: "加尔各答",
+
     x: 1060,
     y: 345,
   },
@@ -336,7 +337,7 @@ export const CITIES = {
     name: "Beijing",
     color: "red",
     population: 17311000,
-    zh: "北京",
+
     x: 1145,
     y: 155,
   },
@@ -345,7 +346,7 @@ export const CITIES = {
     name: "Seoul",
     color: "red",
     population: 22547000,
-    zh: "首尔",
+
     x: 1235,
     y: 165,
   },
@@ -354,7 +355,7 @@ export const CITIES = {
     name: "Tokyo",
     color: "red",
     population: 13189000,
-    zh: "东京",
+
     x: 1320,
     y: 230,
   },
@@ -363,7 +364,7 @@ export const CITIES = {
     name: "Shanghai",
     color: "red",
     population: 13482000,
-    zh: "上海",
+
     x: 1175,
     y: 250,
   },
@@ -372,7 +373,7 @@ export const CITIES = {
     name: "Hong Kong",
     color: "red",
     population: 7106000,
-    zh: "香港",
+
     x: 1155,
     y: 370,
   },
@@ -381,7 +382,7 @@ export const CITIES = {
     name: "Taipei",
     color: "red",
     population: 8338000,
-    zh: "台北",
+
     x: 1250,
     y: 335,
   },
@@ -390,7 +391,7 @@ export const CITIES = {
     name: "Osaka",
     color: "red",
     population: 2871000,
-    zh: "大阪",
+
     x: 1330,
     y: 325,
   },
@@ -399,7 +400,7 @@ export const CITIES = {
     name: "Bangkok",
     color: "red",
     population: 7151000,
-    zh: "曼谷",
+
     x: 1100,
     y: 445,
   },
@@ -408,7 +409,7 @@ export const CITIES = {
     name: "Ho Chi Minh City",
     color: "red",
     population: 8314000,
-    zh: "胡志明市",
+
     x: 1180,
     y: 495,
   },
@@ -417,7 +418,7 @@ export const CITIES = {
     name: "Manila",
     color: "red",
     population: 20767000,
-    zh: "马尼拉",
+
     x: 1290,
     y: 450,
   },
@@ -426,7 +427,7 @@ export const CITIES = {
     name: "Jakarta",
     color: "red",
     population: 26063000,
-    zh: "雅加达",
+
     x: 1095,
     y: 555,
   },
@@ -435,7 +436,7 @@ export const CITIES = {
     name: "Sydney",
     color: "red",
     population: 3785000,
-    zh: "悉尼",
+
     x: 1310,
     y: 610,
   },
